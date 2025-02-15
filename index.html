@@ -13,19 +13,44 @@
             background-image: url('https://i.imgur.com/LJQTB1J.png'); /* Dein Hintergrundbild */
             background-size: cover;
             background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
 
-        /* Musik unsichtbar einbetten */
+        /* Musik Player sichtbar */
         audio {
-            display: none; /* Versteckt den Musik-Player */
+            width: 300px;
+            margin-top: 20px;
+        }
+
+        /* Lautstärkeregler */
+        .volume-control {
+            margin-top: 10px;
+            width: 300px;
         }
     </style>
 </head>
 <body>
     <!-- Musik einbetten -->
-    <audio autoplay loop>
+    <audio id="audio" autoplay loop>
         <source src="free-lofi-type-beat-evening-stroll-209514.mp3" type="audio/mp3">
         Dein Browser unterstützt das Audio-Element nicht.
     </audio>
+
+    <!-- Lautstärkeregler -->
+    <input class="volume-control" type="range" id="volume" min="0" max="1" step="0.01" value="0.6">
+
+    <script>
+        // Lautstärkeregler hinzufügen
+        const audio = document.getElementById("audio");
+        const volumeControl = document.getElementById("volume");
+
+        // Lautstärke mit Schieberegler einstellen
+        volumeControl.addEventListener("input", (e) => {
+            audio.volume = e.target.value;
+        });
+    </script>
 </body>
 </html>
