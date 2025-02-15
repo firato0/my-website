@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hintergrundbild mit Text</title>
+    <link href="https://fonts.googleapis.com/css2?family=Belladonna&display=swap" rel="stylesheet"> <!-- Belladonna Schriftart -->
     <style>
         /* Hintergrundstil */
         body {
@@ -15,7 +16,8 @@
             background-position: center;
             display: flex;
             justify-content: center; /* Zentriert das Textfeld horizontal */
-            align-items: center; /* Zentriert das Textfeld vertikal */
+            align-items: flex-start; /* Setzt das Textfeld weiter nach oben */
+            padding-top: 50px; /* Etwas Abstand vom oberen Rand */
         }
 
         /* Textfeld mit unsichtbarem Hintergrund */
@@ -24,7 +26,7 @@
             padding: 20px;
             font-size: 24px;
             color: black;
-            font-family: Arial, sans-serif;
+            font-family: 'Belladonna', sans-serif; /* Belladonna Schriftart */
             text-align: center;
             position: relative;
             left: 20px; /* Leicht nach rechts verschoben */
@@ -34,7 +36,12 @@
 <body>
     <!-- Textfeld mit unsichtbarem Hintergrund -->
     <div class="text-box">
-        Im 18 years old
+        I am 19 years old.<br><br>
+        ---------------------------<br><br>
+        My favorite anime is Berserk<br><br>
+        ---------------------------<br><br>
+        Hop on Valorant:<br>
+        Guts#izana
     </div>
 </body>
 </html>
