@@ -3,37 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hintergrundbild mit Text</title>
-    <link href="https://fonts.googleapis.com/css2?family=Belladonna&display=swap" rel="stylesheet"> <!-- Belladonna Schriftart -->
+    <title>Hintergrundbild mit Besucherzähler</title>
+    <link href="https://fonts.googleapis.com/css2?family=Belladonna&display=swap" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
     <style>
-        /* Hintergrundstil */
         body {
             margin: 0;
             padding: 0;
             height: 100vh;
-            background-image: url('https://i.imgur.com/LJQTB1J.png'); /* Dein Hintergrundbild */
+            background-image: url('https://i.imgur.com/LJQTB1J.png');
             background-size: cover;
             background-position: center;
             display: flex;
-            justify-content: center; /* Zentriert das Textfeld horizontal */
-            align-items: flex-start; /* Setzt das Textfeld weiter nach oben */
-            padding-top: 50px; /* Etwas Abstand vom oberen Rand */
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 50px;
         }
 
-        /* Textfeld mit unsichtbarem Hintergrund */
         .text-box {
-            background-color: transparent; /* Der Hintergrund des Textes ist unsichtbar */
+            background-color: transparent;
             padding: 20px;
             font-size: 24px;
             color: black;
-            font-family: 'Belladonna', sans-serif; /* Belladonna Schriftart */
+            font-family: 'Belladonna', sans-serif;
             text-align: center;
             position: relative;
-            left: 20px; /* Leicht nach rechts verschoben */
+            left: 20px;
+        }
+
+        /* Besucherzähler oben rechts */
+        .visitor-count {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 20px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .visitor-count img {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
         }
     </style>
 </head>
 <body>
+
     <!-- Textfeld mit unsichtbarem Hintergrund -->
     <div class="text-box">
         I am 18 years old.<br><br>
@@ -43,5 +64,40 @@
         Hop on Valorant:<br>
         Guts#izana
     </div>
+
+    <!-- Besucherzähler Anzeige -->
+    <div class="visitor-count">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Eye_icon_1.svg/1200px-Eye_icon_1.svg.png" alt="Eye Icon">
+        <span id="visitor-count">Loading...</span>
+    </div>
+
+    <script>
+        // Firebase-Konfiguration
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        // Firebase initialisieren
+        const app = firebase.initializeApp(firebaseConfig);
+        const database = firebase.database(app);
+
+        // Besucherzähler in Firebase
+        const visitorCountRef = database.ref('visitorCount');
+
+        // Zähler erhöhen
+        visitorCountRef.transaction(currentValue => (currentValue || 0) + 1);
+
+        // Zählerwert lesen und anzeigen
+        visitorCountRef.on('value', snapshot => {
+            const count = snapshot.val();
+            document.getElementById('visitor-count').textContent = `${count} Visitors`;
+        });
+    </script>
 </body>
 </html>
