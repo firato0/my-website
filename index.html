@@ -53,6 +53,12 @@
             margin: 5px 0;
             font-size: 16px;
         }
+
+        /* Zusätzliche Anpassungen */
+        .text-box p:nth-child(2) {
+            margin-top: 20px; /* Abstand zwischen den Absätzen */
+            transform: translateY(-10px) translateX(-5px); /* Text leicht nach oben und nach links verschieben */
+        }
     </style>
 </head>
 <body>
@@ -80,4 +86,11 @@
             localStorage.setItem('visitorCount', count);
 
             // Aktualisieren der Anzeige
-            document.getElementById('visitorCounter').textContent = `Visitors: ${coun
+            document.getElementById('visitorCounter').textContent = `Visitors: ${count}`;
+        }
+
+        // Besucherzähler aktualisieren, wenn die Seite geladen wird
+        updateVisitorCount();
+    </script>
+</body>
+</html>
