@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hintergrund mit Musik-Player</title>
+    <title>Hintergrund mit Musik</title>
     <style>
         /* Hintergrundstil */
         body {
@@ -18,81 +18,24 @@
             align-items: flex-end;
         }
 
-        /* Musik-Player Container */
+        /* Musik-Player Container (wird unsichtbar, keine Steuerungselemente) */
         .music-player {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.3); /* Transparente Hintergrundfarbe */
-            padding: 10px;
-            border-radius: 10px;
-            width: 100px; /* Musik-Player um die Hälfte kleiner */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            display: none; /* Unsichtbar, keine Steuerungselemente */
         }
 
-        /* Lautstärke */
-        .volume-control {
-            width: 100%;
-            margin-bottom: 10px;
-        }
-
-        /* Fortschrittsbalken */
-        .progress-bar {
-            width: 100%;
-            height: 5px;
-            background-color: #ddd;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-
-        .progress-bar span {
-            display: block;
-            height: 100%;
-            background-color: #4CAF50;
-            width: 0%; /* Fortschritt startet bei 0% */
-        }
-
-        /* Button */
-        button {
-            background-color: #4CAFFF; /* Blau, passend zum Hintergrund */
-            color: white;
-            border: none;
-            padding: 8px;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 10px;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
     </style>
 </head>
 <body>
     <!-- Musik einbetten -->
     <audio id="audio" autoplay loop>
         <source src="free-lofi-type-beat-evening-stroll-209514.mp3" type="audio/mp3">
+        <source src="free-lofi-type-beat-evening-stroll-209514.ogg" type="audio/ogg">
         Dein Browser unterstützt das Audio-Element nicht.
     </audio>
 
-    <!-- Musik Player -->
+    <!-- Musik Player (Unsichtbar) -->
     <div class="music-player">
-        <!-- Lautstärkeregler -->
-        <input class="volume-control" type="range" id="volume" min="0" max="1" step="0.01" value="0.5">
-
-        <!-- Fortschrittsbalken -->
-        <div class="progress-bar">
-            <span id="progress"></span>
-        </div>
-
-        <!-- Play/Pause Button -->
-        <button id="playPauseButton">Pause</button>
+        <!-- Steuerungselemente wurden entfernt -->
     </div>
-
-    <script>
-        // Audio-Element und UI-Elemente abrufen
-        const audio = document.getElementById("audio");
-        const volumeControl = 
+</body>
+</html>
