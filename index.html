@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hintergrund mit Musik</title>
+    <title>Lofi Hintergrund mit Musik</title>
     <style>
         /* Hintergrundstil */
         body {
@@ -13,14 +13,55 @@
             background-image: url('https://i.imgur.com/LJQTB1J.png'); /* Dein Hintergrundbild */
             background-size: cover;
             background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Musik Player Container */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+
+        /* Lautstärkeregler */
+        .volume-control {
+            width: 100%;
         }
     </style>
 </head>
 <body>
     <!-- Musik einbetten -->
-    <audio autoplay loop>
-        <source src="https://raw.githubusercontent.com/free-music-archive/free-music-archive.github.io/master/music/songs/classical/Beethoven%20-%20Moonlight%20Sonata%20-%20Piano%20%28by%20Tobias%20Winkelmann%29.mp3" type="audio/mp3">
+    <audio id="audio" autoplay loop>
+        <source src="https://raw.githubusercontent.com/firato0/my-website/main/music/lofi-ambient.mp3" type="audio/mp3">
         Dein Browser unterstützt das Audio-Element nicht.
     </audio>
+
+    <!-- Musik Player -->
+    <div class="music-player">
+        <h3>Lofi Musik</h3>
+        <!-- Lautstärkeregler -->
+        <input class="volume-control" type="range" id="volume" min="0" max="1" step="0.01" value="0.5">
+        <label for="volume">Lautstärke</label>
+    </div>
+
+    <script>
+        // Audio-Element und Lautstärkeregler abrufen
+        const audio = document.getElementById('audio');
+        const volumeControl = document.getElementById('volume');
+
+        // Lautstärkeregelung
+        volumeControl.addEventListener('input', (e) => {
+            audio.volume = e.target.value;
+        });
+    </script>
 </body>
 </html>
