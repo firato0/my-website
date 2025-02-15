@@ -14,10 +14,27 @@
             background-size: cover;
             background-position: center;
             display: flex;
-            justify-content: center; /* Vertikal zentrieren */
-            align-items: center; /* Horizontal zentrieren */
+            justify-content: center; /* Zentriert das Textfeld horizontal */
+            align-items: center; /* Zentriert das Textfeld vertikal */
         }
 
-        /* Textfeld leicht nach rechts verschoben */
+        /* Textfeld mit unsichtbarem Hintergrund */
         .text-box {
-           
+            background-color: transparent; /* Der Hintergrund des Textes ist unsichtbar */
+            padding: 20px;
+            font-size: 24px;
+            color: black;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            position: relative;
+            left: 20px; /* Leicht nach rechts verschoben */
+        }
+    </style>
+</head>
+<body>
+    <!-- Textfeld mit unsichtbarem Hintergrund -->
+    <div class="text-box">
+        Im 18 years old
+    </div>
+</body>
+</html>
