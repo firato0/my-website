@@ -24,9 +24,9 @@
             bottom: 20px;
             right: 20px;
             background: rgba(0, 0, 0, 0.3); /* Transparente Hintergrundfarbe */
-            padding: 15px;
+            padding: 10px;
             border-radius: 10px;
-            width: 200px;
+            width: 100px; /* Musik-Player um die Hälfte kleiner */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -56,10 +56,10 @@
 
         /* Button */
         button {
-            background-color: #4CAF50;
+            background-color: #4CAFFF; /* Blau, passend zum Hintergrund */
             color: white;
             border: none;
-            padding: 10px;
+            padding: 8px;
             border-radius: 5px;
             cursor: pointer;
             width: 100%;
@@ -95,31 +95,4 @@
     <script>
         // Audio-Element und UI-Elemente abrufen
         const audio = document.getElementById("audio");
-        const volumeControl = document.getElementById("volume");
-        const progress = document.getElementById("progress");
-        const playPauseButton = document.getElementById("playPauseButton");
-
-        // Lautstärkeregelung
-        volumeControl.addEventListener("input", (e) => {
-            audio.volume = e.target.value;
-        });
-
-        // Fortschrittsbalken aktualisieren
-        audio.addEventListener("timeupdate", () => {
-            const progressPercentage = (audio.currentTime / audio.duration) * 100;
-            progress.style.width = progressPercentage + "%";
-        });
-
-        // Play/Pause Button
-        playPauseButton.addEventListener("click", () => {
-            if (audio.paused) {
-                audio.play();
-                playPauseButton.textContent = "Pause";
-            } else {
-                audio.pause();
-                playPauseButton.textContent = "Play";
-            }
-        });
-    </script>
-</body>
-</html>
+        const volumeControl = 
