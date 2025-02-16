@@ -83,9 +83,9 @@
         じしˍ,)ノ
     </div>
 
-    <!-- Hintergrundmusik (FluxFM Stream) -->
+    <!-- Hintergrundmusik -->
     <audio autoplay loop>
-        <source src="https://fluxfm.streamabc.net/flx-chillhop-mp3-128-8581707?sABC=67o136s5%230%23rq2s32rp5764rr1r9p54r6n23q3o00q5%23fgernzf.syhksz.qr&aw_0_1st.playerid=streams.fluxfm.de&amsparams=playerid:streams.fluxfm.de;skey:1739667189" type="audio/mpeg">
+        <source src="good-night-lofi-cozy-chill-music-160166.mp3" type="audio/mpeg">
         Dein Browser unterstützt keine Hintergrundmusik.
     </audio>
 
@@ -100,15 +100,6 @@
             localStorage.setItem('visitorCount', count);
             document.getElementById('visitorCounter').textContent = `Visitors: ${count}`;
         }
-
-        // Zähler zurücksetzen (nur zum Testen oder beim Laden)
-        function resetVisitorCount() {
-            localStorage.removeItem('visitorCount');
-            location.reload();
-        }
-
-        // Reset aufrufen, falls gewünscht
-        resetVisitorCount();
 
         updateVisitorCount();
     </script>
