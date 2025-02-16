@@ -16,9 +16,9 @@
             justify-content: flex-end;
             align-items: center;
             padding-right: 50px;
+            flex-direction: column;
         }
 
-        /* Besucherzähler in der oberen Ecke */
         .visitor-counter {
             position: fixed;
             top: 20px;
@@ -41,9 +41,43 @@
             line-height: 1.5;
         }
 
-        /* Audio-Player Styling */
         audio {
             display: none; /* Audio-Player ausblenden */
+        }
+
+        /* Container für Biene und Katze nebeneinander */
+        .bottom-content {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px; /* Abstand zwischen Biene und Katze */
+        }
+
+        /* ASCII-Bild der Biene */
+        .bee-image {
+            color: white;
+            font-family: monospace;
+            font-size: 24px;
+            white-space: pre;
+        }
+
+        /* Text "look, a bee!" */
+        .bee-text {
+            color: white;
+            font-family: monospace;
+            font-size: 24px;
+        }
+
+        /* ASCII-Bild der Katze */
+        .cat-image {
+            color: white;
+            font-family: monospace;
+            font-size: 24px;
+            white-space: pre;
         }
     </style>
 </head>
@@ -65,6 +99,25 @@
         <source src="good-night-lofi-cozy-chill-music-160166.mp3" type="audio/mpeg">
         Dein Browser unterstützt keine Hintergrundmusik.
     </audio>
+
+    <!-- Container für die Biene und die Katze nebeneinander -->
+    <div class="bottom-content">
+        <!-- ASCII-Bild der Biene -->
+        <div class="bee-image">
+            ⋆˚🐝˖
+        </div>
+        <!-- Text "look, a bee!" -->
+        <div class="bee-text">
+            look, a bee!
+        </div>
+        <!-- ASCII-Bild der Katze -->
+        <div class="cat-image">
+            ╱|、<br>
+            (˚ˎ 。7<br>
+            |、˜〵<br>
+            じしˍ,)ノ
+        </div>
+    </div>
 
     <script>
         // Besucherzähler aktualisieren
