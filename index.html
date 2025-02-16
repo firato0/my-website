@@ -41,19 +41,20 @@
             line-height: 1.5;
         }
 
-        /* Text unten rechts */
-        .bee-text {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
+        /* Unsichtbare Box für den neuen Text in der Mitte */
+        .center-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             color: white;
-            font-size: 18px;
+            font-size: 22px;
             font-family: 'Belladonna', serif;
-            text-align: right;
-            line-height: 1.5;
+            text-align: center;
             background: none;
             border: none;
             box-shadow: none;
+            line-height: 1.5;
         }
 
         /* Audio-Player Styling */
@@ -75,22 +76,27 @@
         ⚫Games⚫: Valorant (Guts#izana)
     </div>
 
-    <!-- Text unten rechts -->
-    <div class="bee-text">
-        ╱|、<br>
-        (˚ˎ 。7 <br>
-        |、˜〵 <br>
-        じしˍ,)ノ
+    <!-- Neuer Text in der Mitte des Bildschirms -->
+    <div class="center-text">
+        /)  /)  ~ ┏━━━━━━━━━━━━━━━━━┓<br>
+        ( •-• )  ~There is all about me<br>
+        /づづ ~ ┗━━━━━━━━━━━━━━━━━┛
     </div>
 
     <!-- Hintergrundmusik -->
-    <audio autoplay loop>
+    <audio id="bgMusic" autoplay loop>
         <source src="good-night-lofi-cozy-chill-music-160166.mp3" type="audio/mpeg">
         Dein Browser unterstützt keine Hintergrundmusik.
     </audio>
 
     <script>
-        // Besucherzähler
+        // Besucherzähler zurücksetzen
+        function resetVisitorCount() {
+            localStorage.removeItem('visitorCount');
+            location.reload(); // Seite neu laden
+        }
+
+        // Besucherzähler aktualisieren
         function updateVisitorCount() {
             let count = localStorage.getItem('visitorCount');
             if (!count) {
@@ -101,7 +107,11 @@
             document.getElementById('visitorCounter').textContent = `Visitors: ${count}`;
         }
 
+        // Wenn du den Zähler zurücksetzen möchtest, rufe resetVisitorCount() auf
+        resetVisitorCount(); // Kommentar entfernen, wenn du den Zähler bei jedem Laden zurücksetzen willst
+
         updateVisitorCount();
     </script>
 </body>
 </html>
+
