@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meine Website mit Ninja</title>
+    <title>Meine Website</title>
     <style>
         body {
             margin: 0;
@@ -31,7 +31,7 @@
 
         .text-box {
             position: absolute;
-            top: 50%;
+            top: 20%; /* Text weiter nach oben verschoben */
             left: 50%;
             transform: translate(-50%, -50%) translateX(20px); /* In der Mitte mit Verschiebung nach rechts */
             background-color: rgba(0, 0, 0, 0.5);
@@ -44,69 +44,10 @@
             text-align: center;
         }
 
-        .text-box h3 {
-            margin: 10px 0;
-            font-size: 18px;
-        }
-
-        .text-box p {
-            margin: 5px 0;
+        .text-box .additional-info {
+            margin-top: 10px;
             font-size: 16px;
-        }
-
-        /* Ninja mit Schwert */
-        .ninja-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100px;
-            height: 200px;
-            cursor: pointer;
-        }
-
-        .ninja {
-            position: absolute;
-            width: 100px;
-            height: 200px;
-            background-color: black;
-            border-radius: 10px;
-            transition: transform 0.5s ease;
-        }
-
-        .ninja .head {
-            position: absolute;
-            top: 10px;
-            left: 25px;
-            width: 50px;
-            height: 50px;
-            background-color: #f0c674;
-            border-radius: 50%;
-        }
-
-        .ninja .sword {
-            position: absolute;
-            top: 120px;
-            left: 25px;
-            width: 50px;
-            height: 20px;
-            background-color: #d8d8d8;
-            transform: scaleX(0); /* Startet unsichtbar */
-            transition: transform 0.5s ease;
-            transform-origin: left;
-        }
-
-        .ninja.active .sword {
-            transform: scaleX(1); /* Schwert wird sichtbar, wenn 'active' Klasse hinzugefügt wird */
-        }
-
-        .ninja .body {
-            position: absolute;
-            top: 60px;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background-color: black;
+            font-style: italic;
         }
     </style>
 </head>
@@ -116,18 +57,12 @@
 
     <!-- Textfeld -->
     <div class="text-box">
-        <h3>ᡣ𐭩 ⊹˚. * ── ✿ ── . ݁₊ ⊹ . ݁˖</h3>
-        <p>@{Just call me Guts} ઇ</p>
-        <p>ᡣ𐭩 ⊹˚. * ── ✿ ── . ݁₊ ⊹ . ݁˖</p>
-    </div>
-
-    <!-- Ninja mit Schwert -->
-    <div class="ninja-container" id="ninja">
-        <div class="ninja">
-            <div class="head"></div>
-            <div class="body"></div>
-            <div class="sword"></div>
-        </div>
+        <!-- Hinzugefügter Text -->
+        <h3>⚫Name⚫: Guts⚫</h3>
+        <p>⚫Age⚫: 18</p>
+        <p>⚫Birthday⚫: 13.07.2006</p>
+        <p>⚫Favorite Anime⚫: Berserk</p>
+        <p>⚫Games⚫: Valorant (Guts#izana)</p>
     </div>
 
     <script>
@@ -143,12 +78,6 @@
         }
 
         updateVisitorCount();
-
-        // Ninja-Schwert-Aktion
-        const ninja = document.getElementById('ninja');
-        ninja.addEventListener('click', () => {
-            ninja.querySelector('.ninja').classList.toggle('active');
-        });
     </script>
 </body>
 </html>
