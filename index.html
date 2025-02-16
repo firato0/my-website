@@ -13,8 +13,8 @@
             background-size: cover;
             background-position: center;
             display: flex;
-            justify-content: flex-end;
-            align-items: flex-end;
+            justify-content: center;
+            align-items: center;
         }
 
         /* Besucherzähler in der oberen Ecke */
@@ -29,29 +29,15 @@
             border-radius: 5px;
         }
 
-        .text-box {
-            position: absolute;
-            top: 50%; 
-            left: 50%;
-            transform: translate(0%, -50%) translateX(30px); /* Verschiebung nach rechts */
-            padding: 20px;
+        .about-me {
             color: white;
-            font-size: 20px;
+            font-size: 22px;
             font-family: 'Belladonna', serif;
             text-align: center;
-            background: none; /* Hintergrund entfernt */
-            border: none; /* Rahmen entfernt */
-            box-shadow: none; /* Schatten entfernt */
-        }
-
-        .text-box h3 {
-            margin: 10px 0;
-            font-size: 18px;
-        }
-
-        .text-box p {
-            margin: 5px 0;
-            font-size: 16px;
+            background: none;
+            border: none;
+            box-shadow: none;
+            line-height: 1.5;
         }
     </style>
 </head>
@@ -59,11 +45,13 @@
     <!-- Besucherzähler in der oberen Ecke -->
     <div class="visitor-counter" id="visitorCounter">Loading...</div>
 
-    <!-- Textfeld -->
-    <div class="text-box">
-        <h3>ᡣ𐭩 ⊹˚. * ── ✿ ── . ݁₊ ⊹ . ݁˖</h3>
-        <p>@{Just call me Guts} ઇ</p>
-        <p>ᡣ𐭩 ⊹˚. * ── ✿ ── . ݁₊ ⊹ . ݁˖</p>
+    <!-- About Me Liste -->
+    <div class="about-me">
+        ⚫Name⚫: Guts⚫<br>
+        ⚫Age⚫: 18<br>
+        ⚫Birthday⚫: 13.07.2006<br>
+        ⚫Favorite Anime⚫: Berserk<br>
+        ⚫Games⚫: Valorant (Guts#izana)
     </div>
 
     <script>
