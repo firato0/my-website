@@ -41,22 +41,6 @@
             line-height: 1.5;
         }
 
-        /* Unsichtbare Box für den neuen Text in der Mitte */
-        .center-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 22px;
-            font-family: 'Belladonna', serif;
-            text-align: center;
-            background: none;
-            border: none;
-            box-shadow: none;
-            line-height: 1.5;
-        }
-
         /* Audio-Player Styling */
         audio {
             display: none; /* Audio-Player ausblenden */
@@ -76,13 +60,6 @@
         ⚫Games⚫: Valorant (Guts#izana)
     </div>
 
-    <!-- Neuer Text in der Mitte des Bildschirms -->
-    <div class="center-text">
-           /)  /)     ~ ┏━━━━━━━━━━━━━━━━━┓<br>
-          ( •-• )   ~There is all about me<br>
-           /づづ ~      ┗━━━━━━━━━━━━━━━━━┛
-    </div>
-
     <!-- Hintergrundmusik -->
     <audio id="bgMusic" autoplay loop>
         <source src="good-night-lofi-cozy-chill-music-160166.mp3" type="audio/mpeg">
@@ -90,12 +67,6 @@
     </audio>
 
     <script>
-        // Besucherzähler zurücksetzen
-        function resetVisitorCount() {
-            localStorage.removeItem('visitorCount');
-            location.reload(); // Seite neu laden
-        }
-
         // Besucherzähler aktualisieren
         function updateVisitorCount() {
             let count = localStorage.getItem('visitorCount');
@@ -107,11 +78,7 @@
             document.getElementById('visitorCounter').textContent = `Visitors: ${count}`;
         }
 
-        // Wenn du den Zähler zurücksetzen möchtest, rufe resetVisitorCount() auf
-        resetVisitorCount(); // Kommentar entfernen, wenn du den Zähler bei jedem Laden zurücksetzen willst
-
         updateVisitorCount();
     </script>
 </body>
 </html>
-
