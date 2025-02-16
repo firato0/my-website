@@ -55,6 +55,11 @@
             border: none;
             box-shadow: none;
         }
+
+        /* Audio-Player Styling */
+        audio {
+            display: none; /* Audio-Player ausblenden */
+        }
     </style>
 </head>
 <body>
@@ -72,12 +77,17 @@
 
     <!-- Text unten rechts -->
     <div class="bee-text">
-      
-         ╱|、<br>
+        ╱|、<br>
         (˚ˎ 。7 <br>
         |、˜〵 <br>
         じしˍ,)ノ
     </div>
+
+    <!-- Hintergrundmusik (FluxFM Stream) -->
+    <audio autoplay loop>
+        <source src="https://fluxfm.streamabc.net/flx-chillhop-mp3-128-8581707?sABC=67o136s5%230%23rq2s32rp5764rr1r9p54r6n23q3o00q5%23fgernzf.syhksz.qr&aw_0_1st.playerid=streams.fluxfm.de&amsparams=playerid:streams.fluxfm.de;skey:1739667189" type="audio/mpeg">
+        Dein Browser unterstützt keine Hintergrundmusik.
+    </audio>
 
     <script>
         // Besucherzähler
@@ -90,6 +100,15 @@
             localStorage.setItem('visitorCount', count);
             document.getElementById('visitorCounter').textContent = `Visitors: ${count}`;
         }
+
+        // Zähler zurücksetzen (nur zum Testen oder beim Laden)
+        function resetVisitorCount() {
+            localStorage.removeItem('visitorCount');
+            location.reload();
+        }
+
+        // Reset aufrufen, falls gewünscht
+        resetVisitorCount();
 
         updateVisitorCount();
     </script>
