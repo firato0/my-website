@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meine Website</title>
     <style>
+        /* Google Font importieren */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap');
+
         body {
             margin: 0;
             padding: 0;
@@ -15,6 +18,7 @@
             align-items: center;
             background-color: black;
             background-image: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 255, 0.5) 100%);
+            font-family: 'Roboto Slab', serif; /* Schriftart */
         }
 
         /* Animiertes Hintergrundbild im Vollbild und komplett sichtbar */
@@ -32,37 +36,41 @@
             z-index: -1;
         }
 
+        /* Linke Seite - "About Me" Text */
         .about-me {
             color: white;
             font-size: 24px;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            position: relative;
+            text-align: left;
+            position: absolute;
+            left: 20px;
+            top: 20px;
             z-index: 1;
-        }
-
-        /* Halbtransparenter Hintergrund für bessere Lesbarkeit */
-        .about-me-container {
-            background: rgba(0, 0, 0, 0.6);
             padding: 20px;
+            background: rgba(0, 0, 0, 0.6);
             border-radius: 10px;
             display: inline-block;
         }
+
+        .about-me p {
+            margin-bottom: 20px; /* Abstand zwischen den Textabschnitten */
+        }
+
+        .about-me .emoji {
+            margin-right: 10px;
+        }
+
     </style>
 </head>
 <body>
     <!-- Animiertes Hintergrundbild -->
     <div class="background-image"></div>
 
-    <!-- About Me Liste -->
+    <!-- About Me Text auf der linken Seite -->
     <div class="about-me">
-        <div class="about-me-container">
-            ⚫Name⚫: Guts⚫<br>
-            ⚫Age⚫: 18<br>
-            ⚫Birthday⚫: 13.07.2006<br>
-            ⚫Favorite Anime⚫: Berserk<br>
-            ⚫Games⚫: Valorant (Guts#izana)
-        </div>
+        <p><span class="emoji">👤</span> Im Guts</p>
+        <p><span class="emoji">🎂</span> 18 years old</p>
+        <p><span class="emoji">📅</span> 13.07.2006</p>
+        <p><span class="emoji">🌍</span> Vienna</p>
     </div>
 
     <!-- Hintergrundmusik -->
