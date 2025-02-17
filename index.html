@@ -60,6 +60,9 @@
         }
 
     </style>
+    <!-- Firebase SDK importieren -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-analytics.js"></script>
 </head>
 <body>
     <!-- Animiertes Hintergrundbild -->
@@ -78,5 +81,23 @@
         <source src="just-relax-11157.mp3" type="audio/mpeg">
         Dein Browser unterstützt keine Hintergrundmusik.
     </audio>
+
+    <!-- Firebase Initialisierung -->
+    <script>
+        // Deine Firebase-Konfiguration
+        const firebaseConfig = {
+            apiKey: "AIzaSyC8jvuDqJd_ezfGmnyJYaA0YGZ8xiYgXZs",
+            authDomain: "meine-website-37747.firebaseapp.com",
+            projectId: "meine-website-37747",
+            storageBucket: "meine-website-37747.firebasestorage.app",
+            messagingSenderId: "137161925471",
+            appId: "1:137161925471:web:3d7f8697eb2eb6dd464cea",
+            measurementId: "G-WKS34X6JCN"
+        };
+
+        // Firebase initialisieren
+        const app = firebase.initializeApp(firebaseConfig);
+        const analytics = firebase.getAnalytics(app);
+    </script>
 </body>
 </html>
