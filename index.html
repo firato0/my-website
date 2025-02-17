@@ -9,11 +9,21 @@
             margin: 0;
             padding: 0;
             height: 100vh;
+            width: 100vw;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Animiertes Hintergrundbild auf halber Größe */
+        .background-image {
+            width: 50vw;
+            height: 50vh;
             background-image: url('https://media1.tenor.com/m/f8G3Sf79TykAAAAC/berserk.gif');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
-            overflow: hidden;
         }
 
         .about-me {
@@ -31,11 +41,14 @@
             padding: 20px;
             border-radius: 10px;
             display: inline-block;
-            margin-top: 20vh;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
+    <!-- Animiertes Hintergrundbild -->
+    <div class="background-image"></div>
+
     <!-- About Me Liste -->
     <div class="about-me">
         <div class="about-me-container">
