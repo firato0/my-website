@@ -71,9 +71,6 @@
             border-radius: 5px;
         }
     </style>
-    <!-- Firebase SDK importieren -->
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
 </head>
 <body>
     <!-- Animiertes Hintergrundbild -->
@@ -88,7 +85,7 @@
     </div>
 
     <!-- Besucherzähler in der oberen Ecke -->
-    <div class="visitor-counter" id="visitorCounter">Visitors: Loading...</div>
+    <div class="visitor-counter" id="visitorCounter">Loading...</div>
 
     <!-- Hintergrundmusik -->
     <audio id="bgMusic" autoplay loop>
@@ -96,34 +93,49 @@
         Dein Browser unterstützt keine Hintergrundmusik.
     </audio>
 
-    <!-- Firebase Initialisierung -->
+    <!-- Firebase SDKs einfügen -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+
     <script>
-        // Deine Firebase-Konfiguration
+        // Firebase Konfiguration
         const firebaseConfig = {
-            apiKey: "AIzaSyC8jvuDqJd_ezfGmnyJYaA0YGZ8xiYgXZs",
-            authDomain: "meine-website-37747.firebaseapp.com",
-            projectId: "meine-website-37747",
-            storageBucket: "meine-website-37747.firebasestorage.app",
-            messagingSenderId: "137161925471",
-            appId: "1:137161925471:web:3d7f8697eb2eb6dd464cea",
-            measurementId: "G-WKS34X6JCN"
+            apiKey: "dein-api-key", // Ersetze mit deinem API-Schlüssel
+            authDomain: "dein-projekt-id.firebaseapp.com", // Ersetze mit deinem Auth-Domain
+            databaseURL: "https://dein-projekt-id.firebaseio.com", // Ersetze mit deiner URL
+            projectId: "dein-projekt-id", // Ersetze mit deiner Projekt-ID
+            storageBucket: "dein-projekt-id.appspot.com", // Ersetze mit deinem Bucket
+            messagingSenderId: "deine-sender-id", // Ersetze mit deiner Sender-ID
+            appId: "deine-app-id", // Ersetze mit deiner App-ID
+            measurementId: "deine-mess-id" // Ersetze mit deinem Messwert
         };
 
         // Firebase initialisieren
         const app = firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
+        const database = firebase.database(app);
 
         // Besucherzähler-Funktion
-        const visitorCountRef = database.ref('visitorCount');
-        
-        // Besucherzähler von Firebase holen und anzeigen
-        visitorCountRef.once('value', (snapshot) => {
-            let count = snapshot.val() || 0;
-            document.getElementById('visitorCounter').textContent = `Visitors: ${count}`;
-            
-            // Besucherzähler inkrementieren und speichern
-            visitorCountRef.set(count + 1);
-        });
+        function updateVisitorCount() {
+            const visitorCountRef = database.ref('visitorCount');
+
+            // Lese den aktuellen Besucherzähler
+            visitorCountRef.once('value').then((snapshot) => {
+                let count = snapshot.val();
+                if (count === null) {
+                    count = 0;  // Falls der Wert noch nicht existiert
+                }
+
+                // Erhöhe den Zähler
+                count++;
+                visitorCountRef.set(count);
+
+                // Zeige die Besucheranzahl auf der Website an
+                document.getElementById('visitorCounter').textContent = `Visitors: ${count}`;
+            });
+        }
+
+        // Aufruf der Funktion, um den Zähler zu erhöhen
+        updateVisitorCount();
     </script>
 </body>
 </html>
