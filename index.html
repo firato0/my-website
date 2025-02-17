@@ -9,76 +9,48 @@
             margin: 0;
             padding: 0;
             height: 100vh;
-            background-image: url('https://i.imgur.com/LJQTB1J.png'); /* Dein Hintergrundbild */
+            background-image: url('https://media1.tenor.com/m/f8G3Sf79TykAAAAC/berserk.gif');
             background-size: cover;
             background-position: center;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            padding-right: 50px;
-        }
-
-        /* Besucherzähler in der oberen Ecke */
-        .visitor-counter {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: rgba(0, 0, 0, 0.6);
-            color: white;
-            padding: 10px;
-            font-size: 20px;
-            border-radius: 5px;
+            background-repeat: no-repeat;
+            overflow: hidden;
         }
 
         .about-me {
             color: white;
-            font-size: 22px;
-            font-family: 'Belladonna', serif;
-            text-align: left;
-            background: none;
-            border: none;
-            box-shadow: none;
-            line-height: 1.5;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Audio-Player Styling */
-        audio {
-            display: none; /* Audio-Player ausblenden */
+        /* Halbtransparenter Hintergrund für bessere Lesbarkeit */
+        .about-me-container {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 20vh;
         }
     </style>
 </head>
 <body>
-    <!-- Besucherzähler in der oberen Ecke -->
-    <div class="visitor-counter" id="visitorCounter">Loading...</div>
-
     <!-- About Me Liste -->
     <div class="about-me">
-        ⚫Name⚫: Guts⚫<br>
-        ⚫Age⚫: 18<br>
-        ⚫Birthday⚫: 13.07.2006<br>
-        ⚫Favorite Anime⚫: Berserk<br>
-        ⚫Games⚫: Valorant (Guts#izana)
+        <div class="about-me-container">
+            ⚫Name⚫: Guts⚫<br>
+            ⚫Age⚫: 18<br>
+            ⚫Birthday⚫: 13.07.2006<br>
+            ⚫Favorite Anime⚫: Berserk<br>
+            ⚫Games⚫: Valorant (Guts#izana)
+        </div>
     </div>
 
     <!-- Hintergrundmusik -->
     <audio id="bgMusic" autoplay loop>
-        <source src="good-night-lofi-cozy-chill-music-160166.mp3" type="audio/mpeg">
+        <source src="just-relax-11157.mp3" type="audio/mpeg">
         Dein Browser unterstützt keine Hintergrundmusik.
     </audio>
-
-    <script>
-        // Besucherzähler aktualisieren
-        function updateVisitorCount() {
-            let count = localStorage.getItem('visitorCount');
-            if (!count) {
-                count = 0;
-            }
-            count++;
-            localStorage.setItem('visitorCount', count);
-            document.getElementById('visitorCounter').textContent = `Visitors: ${count}`;
-        }
-
-        updateVisitorCount();
-    </script>
 </body>
 </html>
