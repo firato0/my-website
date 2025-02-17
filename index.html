@@ -59,10 +59,21 @@
             margin-right: 10px;
         }
 
+        /* Besucherzähler in der oberen Ecke */
+        .visitor-counter {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 10px;
+            font-size: 20px;
+            border-radius: 5px;
+        }
     </style>
     <!-- Firebase SDK importieren -->
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
 </head>
 <body>
     <!-- Animiertes Hintergrundbild -->
@@ -75,6 +86,9 @@
         <p><span class="emoji">📅</span> 13.07.2006</p>
         <p><span class="emoji">🌍</span> Vienna</p>
     </div>
+
+    <!-- Besucherzähler in der oberen Ecke -->
+    <div class="visitor-counter" id="visitorCounter">Visitors: Loading...</div>
 
     <!-- Hintergrundmusik -->
     <audio id="bgMusic" autoplay loop>
@@ -97,7 +111,19 @@
 
         // Firebase initialisieren
         const app = firebase.initializeApp(firebaseConfig);
-        const analytics = firebase.getAnalytics(app);
+        const database = firebase.database();
+
+        // Besucherzähler-Funktion
+        const visitorCountRef = database.ref('visitorCount');
+        
+        // Besucherzähler von Firebase holen und anzeigen
+        visitorCountRef.once('value', (snapshot) => {
+            let count = snapshot.val() || 0;
+            document.getElementById('visitorCounter').textContent = `Visitors: ${count}`;
+            
+            // Besucherzähler inkrementieren und speichern
+            visitorCountRef.set(count + 1);
+        });
     </script>
 </body>
 </html>
