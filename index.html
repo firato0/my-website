@@ -3,139 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meine Website</title>
+    <title>Berserk Website</title>
     <style>
-        /* Google Font importieren */
-        @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap');
-
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: black;
-            background-image: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 255, 0.5) 100%);
-            font-family: 'Roboto Slab', serif; /* Schriftart */
-        }
-
-        /* Animiertes Hintergrundbild im Vollbild und komplett sichtbar */
-        .background-image {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100vw;
-            height: 100vh;
-            background-image: url('https://media1.tenor.com/m/Dls3ERucnB8AAAAC/guts-waiting.gif');
-            background-size: contain; /* Skaliert so, dass das gesamte Bild sichtbar bleibt */
-            background-position: center;
-            background-repeat: no-repeat;
-            transform: translate(-50%, -50%);
+        /* Hintergrundvideo-Styling */
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             z-index: -1;
         }
 
-        /* Linke Seite - "About Me" Text */
-        .about-me {
+        /* Allgemeine Stile */
+        body {
+            margin: 0;
+            padding: 0;
             color: white;
-            font-size: 24px;
-            text-align: left;
+            font-family: 'Arial', sans-serif;
+            background-color: black;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            margin-top: 20%;
+        }
+
+        p {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+
+        /* Audio-Element */
+        audio {
             position: absolute;
-            left: 20px;
-            top: 20px;
-            z-index: 1;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.6);
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            background-color: black;
+            border: none;
             border-radius: 10px;
-            display: inline-block;
-        }
-
-        .about-me p {
-            margin-bottom: 20px; /* Abstand zwischen den Textabschnitten */
-        }
-
-        .about-me .emoji {
-            margin-right: 10px;
-        }
-
-        /* Besucherzähler in der oberen Ecke */
-        .visitor-counter {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: rgba(0, 0, 0, 0.6);
-            color: white;
-            padding: 10px;
-            font-size: 20px;
-            border-radius: 5px;
         }
     </style>
 </head>
 <body>
-    <!-- Animiertes Hintergrundbild -->
-    <div class="background-image"></div>
 
-    <!-- About Me Text auf der linken Seite -->
-    <div class="about-me">
-        <p><span class="emoji">👤</span> Im Guts</p>
-        <p><span class="emoji">🎂</span> 18 years old</p>
-        <p><span class="emoji">📅</span> 13.07.2006</p>
-        <p><span class="emoji">🌍</span> Vienna</p>
-    </div>
+    <!-- TikTok-Video (mit iframe eingebettet) -->
+    <iframe src="https://www.tiktok.com/embed/DEIN_RAW_LINK_HIER" width="325" height="578" frameborder="0" allowfullscreen></iframe>
 
-    <!-- Besucherzähler in der oberen Ecke -->
-    <div class="visitor-counter" id="visitorCounter">Loading...</div>
+    <!-- Titel und Text -->
+    <h1>Berserk - Die Dunkelheit der Welt</h1>
+    <p>Willkommen in der düsteren Welt von Guts. Die Geschichte von Berserk ist voller Schmerz und Leid.</p>
 
-    <!-- Hintergrundmusik -->
-    <audio id="bgMusic" autoplay loop>
-        <source src="just-relax-11157.mp3" type="audio/mpeg">
-        Dein Browser unterstützt keine Hintergrundmusik.
+    <!-- Musik -->
+    <audio controls autoplay loop>
+        <source src="dein-musik-link-hier.mp3" type="audio/mp3">
+        Dein Browser unterstützt das Abspielen von Audio nicht.
     </audio>
 
-    <!-- Firebase SDKs einfügen -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
-
-    <script>
-        // Firebase Konfiguration
-        const firebaseConfig = {
-            apiKey: "dein-api-key", // Ersetze mit deinem API-Schlüssel
-            authDomain: "dein-projekt-id.firebaseapp.com", // Ersetze mit deinem Auth-Domain
-            databaseURL: "https://dein-projekt-id.firebaseio.com", // Ersetze mit deiner URL
-            projectId: "dein-projekt-id", // Ersetze mit deiner Projekt-ID
-            storageBucket: "dein-projekt-id.appspot.com", // Ersetze mit deinem Bucket
-            messagingSenderId: "deine-sender-id", // Ersetze mit deiner Sender-ID
-            appId: "deine-app-id", // Ersetze mit deiner App-ID
-            measurementId: "deine-mess-id" // Ersetze mit deinem Messwert
-        };
-
-        // Firebase initialisieren
-        const app = firebase.initializeApp(firebaseConfig);
-        const database = firebase.database(app);
-
-        // Besucherzähler-Funktion
-        function updateVisitorCount() {
-            const visitorCountRef = database.ref('visitorCount');
-
-            // Lese den aktuellen Besucherzähler
-            visitorCountRef.once('value').then((snapshot) => {
-                let count = snapshot.val();
-                if (count === null) {
-                    count = 0;  // Falls der Wert noch nicht existiert
-                }
-
-                // Erhöhe den Zähler
-                count++;
-                visitorCountRef.set(count);
-
-                // Zeige die Besucheranzahl auf der Website an
-                document.getElementById('visitorCounter').textContent = `Visitors: ${count}`;
-            });
-        }
-
-        // Aufruf der Funktion, um den Zähler zu erhöhen
-        updateVisitorCount();
-    </script>
 </body>
 </html>
